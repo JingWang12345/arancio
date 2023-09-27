@@ -26,27 +26,112 @@ function renderPage(data) {
     }
 }
 
-function orderName() {
- 
-    const data = arancio.name.common;
-
-    // Ordina l'array per il campo 'name' in ordine alfabetico crescente
-    data.sort((a, b) => {
-        const nameA = a.name.toLowerCase(); // Converte i nomi in minuscolo per l'ordinamento senza distinzione tra maiuscole e minuscole
+function orderName(arancio) {
+    return arancio.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
         const nameB = b.name.toLowerCase();
-        return nameA.localeCompare(nameB);
-    });
-
-    // Ora l'array 'data' è ordinato per il campo 'name' in ordine alfabetico crescente.
-    // Puoi fare ciò che vuoi con i dati ordinati, ad esempio visualizzarli a schermo o eseguire altre operazioni.
-}
-
-function orderPopolazione() {
- 
-    arancio.sort(function (a, b) {
-        return a.population - b.population;
-    });
-
-    renderPage();
+        
+        if (nameA < nameB) {
+            return -1;
         }
+        
+        if (nameA > nameB) {
+            return 1;
+        }
+        
+        return 0;
+    });
+}
+const aranciData =[arancio.name.common];
+const sortedAranci = orderName(aranciData);
+console.log(sortedAranci);
+
+// function orderName(){
+//     data.sort((a, b) => {
+//         const nameA = a.name.common.toLowerCase(); 
+//         const nameB = b.name.common.toLowerCase();
+        
+//         if (nameA < nameB) {
+//           return -1; 
+//         }
+        
+//         if (nameA > nameB) {
+//           return 1; 
+//         }
+        
+//         return 0; 
+//       });
     
+//       loadAranci();
+// }
+
+// function orderName(data, name) {
+//     let btn = document.getElementById('btn-name')
+//     return arancio.sort((a, b) => {
+//       const nameA = a[name].toLowerCase();
+//       const nameB = b[name].toLowerCase();
+  
+//       if (nameA < nameB) {
+//         return -1; 
+//       }
+  
+//       if (nameA > nameB) {
+//         return 1; 
+//       }
+  
+//       return 0; 
+//     });
+//   }
+
+
+
+
+// function orderPopolazione() {
+ 
+//    aranci.sort(function (a, b) {
+//         return a.population - b.population;
+//     });
+
+//     renderPage();
+//         }
+    
+        // function orderName(arr, property) {
+        //     return arr.sort((a, b) => {
+        //         const nameA = a[property].toLowerCase();
+        //         const nameB = b[property].toLowerCase();
+
+        //         if (nameA < nameB) {
+        //             return -1;
+        //         }
+
+        //         if (nameA > nameB) {
+        //             return 1;
+        //         }
+
+        //         return 0;
+        //     });
+        // }
+
+        // const aranciContainer = document.getElementById('aranci-container');
+        // const sortByNameButton = document.getElementById('btn-name');
+
+        // const aranciData = [
+        //     arancio.name.common
+        // ];
+
+        // function renderData(data) {
+        //     aranciContainer.innerHTML = '';
+        //     data.forEach(data => {
+        //         const li = document.createElement('li');
+        //         li.textContent = data.name;
+        //         aranciContainer.appendChild(li);
+        //     });
+        // }
+
+        // sortByNameButton.addEventListener('click', () => {
+        //     const sortedData = orderName(aranciData, 'name');
+        //     renderData(sortedData);
+        // });
+
+        // // Iniziale rendering dei dati
+        // renderData(aranciData);
